@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- build file for phing -->
+<project name="MF_Documentation" default="help" basedir=".">
+  <!-- Human-readable info about our component -->
+  <!-- Paths to the directories that we work with -->
+  <property name="project.srcdir" value="${project.basedir}/src" override="true" />
+  <property name="project.toolsdir" value="${project.basedir}/tools" override="true" />
+  <property name="project.builddir" value="${project.basedir}/build" override="true" />
+  <property name="project.distdir" value="${project.basedir}/dist" override="true" />
+  <property name="project.localhtmldir" value="/var/www/framework.methodosity.com/" override="true" />
+
+  <!-- Tell the user what this build file supports -->
+  <target name="help">
+    <echo message="${project.name} ${project.version}: build.xml targets:" />
+    <echo message="" />
+    <echo message="test" />
+    <echo message="  Run the validation tools to catch Docbook errors" />
+    <echo message="compile" />
+    <echo message="  Turn the Docbook sources into the publishable books" />
+    <echo message="install.local" />
+    <echo message="  Install the Docbook into ${project.localhtmldir}" />
+    <echo message="  You probably need to be root to run this target" />
+    <echo message="git-tag" />
+    <echo message="  Tag a new release in git and push to github" />
+    <echo message="publish" />
+    <echo message="  Publish the Docbook to the production website" />
+    <echo message="clean" />
+    <echo message="  Remove all temporary folders created by this build file" />
+  </target>
+
+  <!-- Test the Docbook sources for validation errors -->
+  <target name="test">
+    
+  </target>
+
+  <!-- Compile the Docbook into the published formats -->
+  <target name="compile" depends="test">
+    <delete dir="${project.builddir}"/>
+    <mkdir dir="${project.builddir}"/>
+
+    <phingcall target="compile-src">
+      <property name="compile.version" value="1.0" />
+      <property name="compile.lang" value="en" />
+    </phingcall>
+  </target>
+
+  <!-- Compile the v1.0 EN Docbook sources -->
+  <target name="compile-src">
+    <property name="compile.srcdir" value="${project.srcdir}/${compile.version}-${compile.lang}" />
+    <property name="compile.builddir" value="${project.builddir}/${compile.version}-${compile.lang}" />
+    <property name="compile.distdir" value="${project.distdir}/${compile.version}-${compile.lang}" />
+
+    <delete dir="${compile.builddir}" />
+    <mkdir dir="${compile.builddir}" />
+    <delete dir="${compile.distdir}" />
+    <mkdir dir="${compile.distdir}" />
+
+    <mkdir dir="figures" />
+    <copy todir="figures">
+      <fileset dir="${compile.srcdir}/figures">
+        <include name="*.png" />
+      </fileset>
+    </copy>
+
+    <copy file="${project.toolsdir}/docbook.css" todir="${compile.distdir}" />
+
+    <!-- Create the HTML version of the docs -->
+    <exec command="xsltproc --stringparam base.dir ${compile.distdir}/ --stringparam l10n.gentext.language ${compile.lang} ${project.toolsdir}/html-chunked.xsl ${compile.srcdir}/book.xml" logoutput="true" />
+    <exec command="${project.toolsdir}/scripts/highlight.php ${compile.distdir}/" />
+    <exec command="${project.toolsdir}/scripts/webify.php ${compile.distdir} ${compile.lang}-${compile.version}" logoutput="true" />
+
+    <!-- Create the PDF version of the docs -->
+    <exec command="xsltproc --stringparam fop1.extensions 1 --stringparam l10n.gentext.language ${compile.lang} --output ${compile.builddir}/mf-book.fo ${project.toolsdir}/fo.xsl ${compile.srcdir}/book.xml" logoutput="true" />
+    <exec command="${project.toolsdir}/scripts/HighlightPDF.php ${compile.builddir}/mf-book.fo" logoutput="true" />
+    <exec command="${project.toolsdir}/fop/fop -fo ${compile.builddir}/mf-book.fo -pdf ${compile.distdir}/mf-book-${compile.version}-${compile.lang}.pdf" logoutput="true" />
+
+    <!-- Create the EPUB version of the docs -->
+    <exec command="${project.toolsdir}/docbook-xsl/epub/bin/dbtoepub -o ${project.distdir}/mf-book-${compile.version}-${compile.lang}.epub ${compile.srcdir}/book.xml" logoutput="true" />
+
+    <!-- Tidy up after ourselves -->
+    <delete file="${compile.builddir}/mf-book.fo"/>
+    <move file="figures" todir="${compile.distdir}" />
+  </target>
+
+  <!-- Install a copy of the website locally for testing -->
+  <target name="install.local" depends="compile">
+    <copy todir="${project.builddir}">
+      <fileset refid="srcfiles" />
+    </copy>
+  </target>
+
+  <!-- Tag this release -->
+  <target name="git-tag">
+    <exec command="git tag -a 'Release-${project.version}' -m 'Tagged Release ${project.version}'" checkreturn="true" logoutput="true" />
+    <exec command="git push --tags origin master" checkreturn="true" logoutput="true" />
+  </target>
+
+  <!-- Publish the distribution files to the production website -->
+  <target name="publish" depends="compile">
+    <exec command="rsync ${project.distdir} stuart@framework.methodosity.com:/var/www/framework.methodosity.com/" checkreturn="true" logoutput="true" />
+  </target>
+
+  <!-- Clean up our mess -->
+  <target name="clean">
+    <delete dir="${project.builddir}" />
+    <delete dir="${project.distdir}" />
+  </target>
+</project>
