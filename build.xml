@@ -101,7 +101,7 @@
 
   <!-- Install a copy of the website locally for testing -->
   <target name="install.local" depends="compile">
-    <copy todir="${project.builddir}">
+    <copy todir="${prefix}">
       <fileset refid="srcfiles" />
     </copy>
   </target>
