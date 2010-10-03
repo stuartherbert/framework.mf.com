@@ -174,16 +174,19 @@ table {
   text-align: right;
 }
 
-pre.programlisting, pre.screen, code {
+pre.programlisting, pre.screen code {
   font-family: monospace;
-  padding-left: 1em;
-  padding-right: 1em;
+}
+
+code.literal {
+  font-family: monospace;
+  font-size: 0.9em;
 }
 
 p.note, div.example pre.programlisting, pre.screen {
   background-color: #eeeeec;
   margin: 1em 40px 1em 40px;
-  padding: 0.2em;
+  padding: 0.5em;
 }
 
 .epigraph, .list-of-examples, .list-of-figures, .toc, div.example pre.programlisting, pre.screen {
