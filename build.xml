@@ -30,7 +30,24 @@
 
   <!-- Test the Docbook sources for validation errors -->
   <target name="test">
-    
+    <phingcall target="test-src">
+      <property name="test.version" value="1.0" />
+      <property name="test.lang" value="en" />
+    </phingcall>
+  </target>
+
+  <target name="test-src">
+    <property name="test.srcdir" value="${project.srcdir}/${test.version}-${test.lang}" />
+    <foreach param="xmlfile" absparam="absxmlfile" target="test-xml">
+      <fileset dir="${test.srcdir}">
+        <include name="*.xml"/>
+      </fileset>
+    </foreach>
+  </target>
+
+  <!-- Check for XML errors -->
+  <target name="test-xml">
+    <exec command="xmllint --noout ${absxmlfile}" checkreturn="true" logoutput="true" />
   </target>
 
   <!-- Compile the Docbook into the published formats -->
@@ -106,3 +123,4 @@
     <delete dir="${project.distdir}" />
   </target>
 </project>
+<!-- vim: set tabstop=2 shiftwidth=2 expandtab: -->
