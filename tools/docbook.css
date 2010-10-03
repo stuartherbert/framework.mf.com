@@ -176,11 +176,13 @@ table {
 
 pre.programlisting, pre.screen, code {
   font-family: monospace;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 p.note, div.example pre.programlisting, pre.screen {
   background-color: #eeeeec;
-  margin: 1em 0 1em 0;
+  margin: 1em 40px 1em 40px;
   padding: 0.2em;
 }
 
@@ -394,28 +396,36 @@ body div.colleft div.col1 table a:hover {
 
 }
 
-body div.colleft div.col1 div.chapter div.titlepage h2.title {
+body div.colleft div.col1 div.chapter div.titlepage h2.title,
+body div.colleft div.col1 div.appendix div.titlepage h2.title {
   margin: 20px 0px 25px 0px !important;
   font-size: 26px;
   font-weight: normal;
 }
 
-body div.colleft div.col1 div.chapter p {
+body div.colleft div.col1 div.chapter p,
+body div.colleft div.col1 div.appendix p { 
   /* line-height: 24px; */
   font-size: 16px;
 }
 
-body div.colleft div.col1 div.chapter div.example {
+body div.colleft div.col1 div.chapter div.example,
+body div.colleft div.col1 div.appendix div.example {
   padding: 5px;
 }
 
-body div.colleft div.col1 div.chapter div.example div.example-contents pre{
+body div.colleft div.col1 div.chapter div.example div.example-contents pre,
+body div.colleft div.col1 div.appendix div.example div.example-contents pre{
   padding: 10px;
 }
 
 body div.colleft div.col1 div.chapter div.table,
+body div.colleft div.col1 div.appendix div.table,
 body div.colleft div.col1 div.chapter div.example div.example-contents pre.screen,
-body div.colleft div.col1 div.chapter div.example div.example-contents pre code {
+body div.colleft div.col1 div.appendix div.example div.example-contents pre.screen,
+body div.colleft div.col1 div.chapter div.example div.example-contents pre code,
+body div.colleft div.col1 div.appendix div.example div.example-contents pre code {
   line-height: 20px;
   font-size: 16px;
+  margin-left: 40px;
 }
