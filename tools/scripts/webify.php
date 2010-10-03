@@ -45,7 +45,7 @@ function webifyDirectory($directory, $edition)
             }
 
             $_editions .= sprintf(
-              '<li><a href="http://framework.methodosity.com/manual/%s/%s/index.html"%s>Methodosity Framework %s <span><small>%s</small></span></a></li>',
+              '<li><a href="../%s-%s/index.html"%s>Methodosity Framework %s <span><small>%s</small></span></a></li>',
               $version,
               $language,
               $active,
