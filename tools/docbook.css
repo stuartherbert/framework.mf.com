@@ -401,9 +401,10 @@ body div.colleft div.col1 table a:hover {
 
 body div.colleft div.col1 div.chapter div.titlepage h2.title,
 body div.colleft div.col1 div.appendix div.titlepage h2.title {
-  margin: 20px 0px 25px 0px !important;
+  margin: 40px 0px 25px 0px !important;
   font-size: 26px;
   font-weight: normal;
+  border-bottom: 1px solid #888;
 }
 
 body div.colleft div.col1 div.chapter p,
