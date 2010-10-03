@@ -15,8 +15,7 @@ function webifyDirectory($directory, $edition)
 
     $_editions = '';
     $editions  = array(
-      'en' => array('3.5', '3.4', /*'3.3', '3.2', '3.1', '3.0', '2.3'*/),
-      'ja' => array('3.5', '3.4', /*'3.3', '3.2', '3.1', '3.0', '2.3'*/),
+      'en' => array('1.0'),
       /*'de' => array('2.3')*/
     );
 
@@ -46,7 +45,7 @@ function webifyDirectory($directory, $edition)
             }
 
             $_editions .= sprintf(
-              '<li><a href="http://www.phpunit.de/manual/%s/%s/index.html"%s>PHPUnit %s <span><small>%s</small></span></a></li>',
+              '<li><a href="http://framework.methodosity.com/manual/%s/%s/index.html"%s>Methodosity Framework %s <span><small>%s</small></span></a></li>',
               $version,
               $language,
               $active,
