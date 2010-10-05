@@ -55,17 +55,20 @@
     <delete dir="${project.builddir}"/>
     <mkdir dir="${project.builddir}"/>
 
+    <delete dir="${project.distdir}"/>
+    <mkdir dir="${project.distdir}"/>
+
     <phingcall target="compile-src">
       <property name="compile.version" value="1.0" />
       <property name="compile.lang" value="en" />
     </phingcall>
   </target>
 
-  <!-- Compile the v1.0 EN Docbook sources -->
+  <!-- Compile a single version, single language of Docbook sources -->
   <target name="compile-src">
     <property name="compile.srcdir" value="${project.srcdir}/${compile.version}-${compile.lang}" />
     <property name="compile.builddir" value="${project.builddir}/${compile.version}-${compile.lang}" />
-    <property name="compile.distdir" value="${project.distdir}/${compile.version}-${compile.lang}" />
+    <property name="compile.distdir" value="${project.distdir}/manual/${compile.version}-${compile.lang}" />
 
     <delete dir="${compile.builddir}" />
     <mkdir dir="${compile.builddir}" />
@@ -92,7 +95,7 @@
     <exec command="${project.toolsdir}/fop/fop -fo ${compile.builddir}/mf-book.fo -pdf ${compile.distdir}/mf-book-${compile.version}-${compile.lang}.pdf" logoutput="true" />
 
     <!-- Create the EPUB version of the docs -->
-    <exec command="${project.toolsdir}/docbook-xsl/epub/bin/dbtoepub -o ${project.distdir}/mf-book-${compile.version}-${compile.lang}.epub ${compile.srcdir}/book.xml" logoutput="true" />
+    <exec command="${project.toolsdir}/docbook-xsl/epub/bin/dbtoepub -o ${compile.distdir}/mf-book-${compile.version}-${compile.lang}.epub ${compile.srcdir}/book.xml" logoutput="true" />
 
     <!-- Tidy up after ourselves -->
     <delete file="${compile.builddir}/mf-book.fo"/>
