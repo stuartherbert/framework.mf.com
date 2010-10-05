@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<chapter id="genesis">
+  <title>Genesis</title>
+
+  <para>
+    The Methodosity Framework is a true 3rd generation framework for PHP developers.
+  </para>
+
+  <section id="genesis.1stgen">
+    <title>First Generation: Ruby on Rails Clones and MVC Frameworks</title>
+
+    <para>
+      The first popular frameworks for web-based applications sprang from the phenominal success of Ruby on Rails. Rails showed how a well thought out and comprehensive framework for scripting languages could make a massive improvement to the productivity of web developers. It also showed how standardising the approach to building web-based applications around the Model-View-Controller approach could help developers improve the internal modularisation of their applications.
+    </para>
+
+    <para>
+      As the years have passed, the limitations of the Rails approach have become abundantly clear. Scaffolding and other hand-holding quickly runs out of steam when you're trying to go beyond cookie-cutter websites; the amount of magic that these frameworks do for you makes maintenance (esp when the code passes to different developers) expensive or prohibitive; and the runtime performance can be a killer as your site moves from the bedroom to the data centre.
+    </para>
+
+    <para>
+      That didn't stop the first PHP frameworks attempting to replicate the Rails framework and its approaches.  This approach has run into two key problems, firstly because a lot of the genuine value and power of Rails relies on Ruby language features that simply don't exist in PHP, and secondly because the Rails execution model (Rails is a true application server, which processes persisting between HTTP requests, whereas PHP derives its power from the start-again execution model where no part of the PHP script persists between HTTP requests) is fundamentally different to PHP, allowing Rails to perform some expensive operations at start-up time which would kill the performance of a PHP-based app.
+    </para>
+
+    <para>
+      At the time of writing (late 2010), these first-generation frameworks are currently experiencing a mid-life crisis, as they struggle to address the on-going challenges of steep learning curves, mixed runtime performance characteristics, and diminishing returns on investment as the peak demand for cookie-cutter sites has passed.  They have been successful at drawing notable communities, and large coverage at conferences, and will doubtless survive.  But without significant change, their problems will survive with them.
+    </para>
+  </section>
+
+  <section id="genesis.2ndgen">
+    <title>Second Generation: Apps As Frameworks</title>
+
+    <para>
+      The second wave of popular frameworks are the web-based applications that have come to be used as frameworks themselves. The most notable examples of this are Wordpress, Drupal, and Joomla.  The irony is that these applications have been around for longer than the 1st generation frameworks, but that it took the rise of Rails for developers to realise just how much could be done by adapting these applications far beyond what they were originally written to do.
+    </para>
+
+    <para>
+      As interest in apps-as-frameworks has grown, so the apps themselves have evolved to improve their generic capabilities, embracing their newly-found popularity as platforms for a wider range of uses. This in turn has led to a growth in their popularity, and at the time of writing, developers for these apps are in higher demand than they are for the first generation frameworks.
+    </para>
+
+    <para>
+      The apps-as-framework approach has proven to be successful and productive, and arguably they represent the better approach to cookie-cutter websites when compared to the first generation frameworks. They have significant challenges wrt internal code quality and practices, and their size and popularity make it difficult for them to adopt strong engineering practices such as object-orientation and test-driven development, or to take advantage of improvements in the PHP language such as input filtering or lambda functions.  But they have a proven track-record, and are likely to be with us for the foreseeable future.
+    </para>
+
+    <para>
+      So where does that leave the development community who need to create innovative applications in reduced timescales?
+    </para>
+  </section>
+
+  <section>
+    <title>Third Generation: The Building-Block Frameworks</title>
+
+    <para>
+      The time is now ripe to develop a third generation of frameworks, a generation that learns from the experiences of the previous two generations in order to offer a balanced and flexible approach for the future.
+    </para>
+
+    <para>
+      At the heart of this approach is the death of the monolithic framework, and the shift back to the pre-PHP world of Perl where applications can be assembled out of generic components.  Also key to this approach is scaling back the scaffolding that the framework provides, with a shift back to using features and functionality that the PHP language already provides.
+    </para>
+
+    <para>
+      Also key to this approach is the need to empower the developer.  Many of the performance challenges from older generation frameworks come from trying to hide away complexity behind poorly-performing abstraction layers. In reality, these abstractions have become a crutch that prevents today's developers from getting to grips with the underlying databases that their apps interact with, and third-generation frameworks need to strip these away and reacquaint developers once more with the rich functionality already available in PHP itself.
+    </para>
+
+    <para>
+      The result will be a lightwight approach that delivers minimal performance overheads, increased flexibility, and simplified maintenance into the future.
+    </para>
+  </section>
+</chapter>
+<!-- vim: set tabstop=2 shiftwidth=2 expandtab: -->

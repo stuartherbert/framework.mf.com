@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<chapter id="goals">
+  <title>Goals And Guiding Principles</title>
+
+  <section id="goals-intro">
+    <title>Why Create Another Framework?</title>
+
+    <para>
+      At the time of writing, there are already a lot of PHP frameworks for you to choose from. So why write another one?
+    </para>
+
+    <para>
+      Whilst many of the frameworks are both high-quality and feature-rich, I find that time and time again they're just frameworks written <emphasis>in</emphasis> PHP, rather than being frameworks that fit into the way PHP tends to be used.  They can normally be categorised into two camps: either the framework is yet-another Ruby-on-Rails clone, or the framework looks like it's been written by someone who studied Design Patterns and Java during their university degree.
+   </para>
+
+   <para>
+     The end result is usually the same: a framework with a steep learning curve, terrible runtime performance, and long-term maintenance woes. None of these problems matter much in the bedroom (where almost anything can be made to work), but they matter a lot in business.  And as business models start to shift from consultancy (write once, run away model) to products (publish, rinse, repeat model), these problems are shifting to become one of the main challenges developers face.
+   </para>
+
+   <para>
+     The rise of software-as-a-service (SAAS) means that more and more developers have to maintain the code they write, fixing bugs whilst adding major new features.  The successful firms grow, bringing in more developers, until eventually the code is no longer maintained by the original developer, <emphasis>but it still needs to be maintained and enhanced</emphasis>.  Often, these changes need to happen quickly, where there's no time for a steep learning curve.  And, in time, code needs to be reused by different applications within the firm.
+   </para>
+
+   <para>
+     The existing frameworks leave you with the all-or-nothing choice: either you embrace them utterly, or they don't stick.  But it doesn't have to be this way, and that means the framework wars aren't over yet.
+   </para>
+  </section>
+
+  <section id="goals-guidingStatement">
+    <title>Guiding Statement</title>
+
+    <para>
+      The Methodosity Framework (MF) is a framework designed from the ground up for the PHP language and for those developers who choose to write code in the PHP way. It re-uses your existing skills to make MF-based apps quick to write, easy to maintain and enhance, and quick to learn if you've never seen the code before.  It is built on top of a component architecture, to increase stability and reduce wholesale change in the long term.
+    </para>
+  </section>
+
+  <section id="goals-principles">
+    <title>Core Principles</title>
+
+    <para>
+      The Methodosity Framework supports and promotes the creation of PHP applications written in the PHP way. By using the Methodosity Framework, you save time writing your app, and you save time debugging your app.
+    </para>
+
+    <itemizedlist>
+      <listitem>
+        <para><emphasis>Embracing The PHP Way</emphasis></para>
+
+        <para>
+          PHP is the most popular way to create web-based applications precisely because it solves problems in different ways to how the J2EE / Rails communities have done. The language and its practices are focused on a simpler, lighter touch. Developers are more productive precisely because they can write less code, and simpler code, to get the job done.
+        </para>
+
+        <para>
+          The Methodosity Framework will always seek to provide a simple and direct solution that re-uses the way PHP apps already work.  Less code means less things to go wrong.  Reduced complexity means it is quicker to learn.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis>Component-Based Architecture</emphasis></para>
+
+        <para>
+          Before PHP existed, the world created web-based applications in Perl. As time has passed, Perl (through its CPAN library) has amassed reusable components to meet almost any requirement going. To date, however, the PHP world tends to cluster its solutions in monolithic frameworks, and re-inventing the wheel has become standard practice as a result.
+        </para>
+        <para>
+          The Methodosity Framework is delivered as a collection of components, with each component focused on doing one job well. This approach increases quality and isolates change, which reduces the amount of reworking you need to do in any code you write that reuses these components.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis>Performance Through Avoiding Over-Engineering</emphasis></para>
+
+        <para>
+          When man went to the moon, so legend has it, the Americans spent a sizeable amount of money to develop a pen that works in a zero-gravity environment. That's quite a feat of engineering.  The Russians took pencils.
+        </para>
+
+        <para>
+          PHP is, at its heart, a scripting language, and therefore code written in PHP is slower than code written in C or Java. It is said that performance doesn't matter, because the database is always the bottleneck; however, that is only true for the very simpliest of applications or for the very largest. Most modern web-based applications work hard, and hosting popular apps is not a cheap business. The more CPU time is spent in framework code, the less CPU time is spent running <emphasis>your</emphasis> code.
+        </para>
+
+        <para>
+          The Methodosity Framework is a lightweight framework, with no slow abstraction layers, and no config files in slow-to-process file formats. There's no 50+ deep stack of framework code running before <emphasis>your</emphasis> code gets a look-in. We do our job to help you, then we get the hell out of the way.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis>Abstractions Are A Distraction</emphasis></para>
+
+        <para>
+          Abstraction layers come with good intentions, but do you really need them? Are you really going to port your application from MySQL to run on Postgres? Do you really need the ORM to construct an SQL statemenet for you through several expensive function calls, when you could just write the request as a single string? Do these abstraction layers help, or do they distract you from learning more about the underlying datastores you're interacting with, whilst distracting the CPU with more time spent running the framework rather than your own code?
+        </para>
+
+        <para>
+          The ORM provided by the Methodosity Framework provides only the most common options that you need, and exposes the underlying datastore for you to do the rest yourself, efficiently.  The same goes for Routing, and any other kind of abstraction component.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis>Maintainability Through Straight-Forward Code</emphasis></para>
+
+        <para>
+          The hardest bugs of all to track down happen in the code you can't easily find.  This might be because the error wasn't detected when it happened, and bad data was therefore allowed to propagate through the application.  It can also be that PHP's magic features are obscuring the fact that a piece of underlying code is being run at all.
+        </para>
+
+        <para>
+          The Methodosity Framework will always provide code that is straight-forward to trace through.  PHP's magic features will be restricted to limited scopes.  Components will include runtime tests to aggressively catch errors at source, and will always throw exceptions so that your code can decide what to do about the error.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis>Productivity By Avoiding Refactoring</emphasis></para>
+
+        <para>
+          One of the attractions of using a framework is that you get bug fixes and new features for free, provided by someone else. However, if new versions of the framework no longer work with your code, you're faced with a choice: change your code, or don't upgrade the framework and instead start to work around it. This can be a big pain in the ass if you need to upgrade to get a fix for an urgent problem; and having to constantly refactor your otherwise-working code just to continue to work with the framework takes time away from adding features and fixing faults in your own code.
+        </para>
+
+        <para>
+          The Methodosity Framework will use <link linkend="goals.versioning">a clear version number scheme</link> to ensure that you know when you can safely upgrade, and when we've broken backwards compatibility (through choice or necessity).  Our unit tests (always available from our source code repositories) will test the interfaces that we document, and any regressions we've added during the lifetime of a component. If something works in our unit tests, we expect it to continue to work throughout the lifetime of the component.
+        </para>
+        <para>
+          In return, we need you to stick to using our components as documented, and to accept responsibility if your code breaks because you're using an undocumented trick.
+        </para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section id="goals.versioning">
+    <title>How Versioning Works</title>
+
+    <para>
+      The Methodosity Framework, and all of its components, follow the classic <emphasis>major.minor.patchlevel</emphasis> numbering scheme.
+    </para>
+
+    <itemizedlist>
+      <listitem>
+        <para>Major numbers change when backwards-compatibility breaks.</para>
+      </listitem>
+      <listitem>
+        <para>Minor numbers change when new features and functionality is added.</para>
+      </listitem>
+      <listitem>
+        <para>Patchlevel numbers change when bugs are fixed.</para>
+      </listitem>
+    </itemizedlist>
+
+    <para>
+      For example, <literal>MF_Exception-1.0.0</literal> is the first release of the <literal>MF_Exception</literal> component. <literal>MF_Exception-1.0.1</literal> is a bug-fix release, containing no new functionality. <literal>MF_Exception-1.1.0</literal> includes new functionality (and maybe bug-fixes), but it remains 100% backwards compatible with <literal>MF_Exception-1.0.0</literal>.  If <literal>MF_Exception</literal> needs to break backwards-compatibility, then the release will be called <literal>MF_Exception-2.0.0</literal>.
+    </para>
+
+    <para>
+      This approach ensures that you don't have to edit your code every time there's a new release of the Methodosity Framework or its sub-components, because each <literal>MF_Exception-1.*.*</literal> release will always be 100% backwards compatible. Our unit tests test the interfaces that we pledge to maintain for the lifetime of the component.
+    </para>
+  </section>
+</chapter>
+<!-- vim: set tabstop=2 shiftwidth=2 expadtab: -->

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<chapter id="license">
+  <title>Licensing</title>
+
+  <section id="license.introduction">
+    <title>Introduction</title>
+
+    <para>
+      We know it can be hard to work out what terms some projects are licensed under, and that this can be important when deciding whether or not to use code from a project for the first time. As a result, we have clearly set out our licensing terms below.
+    </para>
+
+    <para>
+      The Methodosity Framework is an open source project.  We want you to be able to incorporate our code into any type of project (commercial or otherwise) without worrying about how using our code impacts the terms you can offer your own code under.
+    </para>
+
+    <para>
+      We also want to ensure that everyone can always freely obtain our documentation, and that you are free to correct and improve upon our documentation as well.
+    </para>
+  </section>
+
+  <section id="license.code">
+    <title>Source Code: New BSD License</title>
+
+    <para>
+      All of the Methodosity Framework source code (this is the code available from <ulink url="http://pear.methodosity.com">pear.methodosity.com</ulink>) is licensed under the <ulink url="http://www.opensource.org/licenses/bsd-license.php">new BSD license</ulink>.
+    </para>
+
+    <para>
+      Copyright (c) 2010, Methodosity Ltd.  All rights reserved.
+    </para>
+    
+    <para>
+      Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+    </para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+         Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+         Neither the name of Methodosity nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <para>
+      THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    </para>
+  </section>
+
+  <section id="license.docs">
+    <title>Documentation: Creative Commons</title>
+    <para>
+      This manual is licensed under the <ulink url="http://creativecommons.org/licenses/by-nc-sa/2.0/uk/">Creative Commons Attribution-NonCommercial-ShareAlike 2.0 UK: England &amp; Wales</ulink>.
+    </para>
+
+    <para>
+      You are free:
+    </para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          to copy, distribute, display, and perform the work
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          to make derivative works
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <para>
+      under the following conditions:
+    </para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          <emphasis>Attribution</emphasis> - You must give the original author credit.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          <emphasis>Non-Commercial</emphasis> - You may not use this work for commercial purposes.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          <emphasis>Share Alike</emphasis> - If you alter, transform, or build upon this work, you may distribute the resulting work only under a license identical to this one.
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <para>
+      With the understanding that:
+    </para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          <emphasis>Waiver</emphasis> - Any of the above conditions can be waived if you get permission from the copyright holder.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          <emphasis>Public Domain</emphasis> - Where the work or any of its elements is in the public domain under applicable law, that status is in no way affected by the license.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          <emphasis>Other Rights</emphasis> - In no way are any of the following rights affected by the license:
+
+          <itemizedlist>
+            <listitem>
+              <para>
+                Your fair dealing or fair use rights, or other applicable copyright exceptions and limitations;
+              </para>
+            </listitem>
+
+            <listitem>
+              <para>
+                The author's moral rights;
+              </para>
+            </listitem>
+
+            <listitem>
+              <para>
+                Rights other persons may have either in the work itself or in how the work is used, such as publicity or privacy rights.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          <emphasis>Notice</emphasis> - For any reuse or distribution, you must make clear to others the license terms of this work.
+        </para>
+      </listitem>
+    </itemizedlist>
+  </section>
+</chapter>
+<!-- vim: set tabstop=2 shiftwidth=2 expandtab: -->

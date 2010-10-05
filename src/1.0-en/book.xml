@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!DOCTYPE book SYSTEM "../../tools/dblite/dblite.dtd" [
+  <!ENTITY buildingManual SYSTEM "buildingManual.xml">
+  <!ENTITY copyright SYSTEM "copyright.xml">
+  <!ENTITY genesis SYSTEM "genesis.xml">
+  <!ENTITY goals SYSTEM "goals.xml">
+  <!ENTITY index SYSTEM "index.xml">
+  <!ENTITY installation SYSTEM "installation.xml">
+  <!ENTITY introduction SYSTEM "introduction.xml">
+  <!ENTITY license SYSTEM "license.xml">
+
+  <!ENTITY MF_Autoloader SYSTEM "MF_Autoloader.xml">
+  <!ENTITY MF_Exception SYSTEM "MF_Exception.xml">
+]>
+
+<book xml:lang="en" id="mf">
+  <title>The Methodosity Framework</title>
+
+  <bookinfo>
+    <pubdate>First edition (v1.0). Updated on <?dbtimestamp format="Y-m-d"?></pubdate>
+
+    <author>
+      <firstname>Stuart</firstname>
+      <surname>Herbert</surname>
+    </author>
+
+    <copyright>
+      <year>2010</year>
+      <holder>Methodosity Ltd</holder>
+    </copyright>
+
+    <legalnotice>
+      <para>This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 2.0 UK: England and Wales license.</para>
+    </legalnotice>
+
+    <abstract>
+      <para>
+        This manual is available as a <ulink url="http://framework.methodosity.com/manual/1.0-en/">website</ulink>, <ulink url="mf-book-1.0-en.pdf">PDF file</ulink> and as an <ulink url="mf-book-1.0-en.epub">EPub file</ulink>.
+      </para>
+    </abstract>
+  </bookinfo>
+
+  &introduction;
+  &license;
+  &genesis;
+  &goals;
+  &installation;
+  &MF_Autoloader;
+  &MF_Exception;
+  &buildingManual;
+  &index;
+</book>
+<!-- vim: set tabstop=2 shiftwidth=2 expandtab: -->

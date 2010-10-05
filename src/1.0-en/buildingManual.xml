@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<appendix id="appendixes.buildingManual">
+  <title>Rebuilding This Manual</title>
+
+  <section id="appendixes.buildingManual.intro">
+    <para>
+      Here are the instructions on how to rebuild this manual from its underlying source code. You will find these instructions if you wish to submit patches to the manual, or if you wish to copy this approach to create a manual for your own project.
+    </para>
+  </section>
+
+  <section id="appendixes.buildingManual.prereqs">
+    <title>Pre-requisites</title>
+
+    <para>
+      To work with the manual, you will need to install the following tools. Refer to each tool's website for instructions on how to install it.
+    </para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          <ulink url="http://phing.info">PHing</ulink>. PHing is a PHP-sort-of-clone of Java's Ant tool. The build.xml file that defines how to build the manual is written for PHing.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          xmllint. xmllint is a command-line tool for validating XML files. The 'phing test' target uses xmllint to validate the manual's XML sources to spot any obvious mistakes in the formating.
+        </para>
+        <para>
+          xmllint is normally available through your operating system's package manager (if you run Linux).
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          xsltproc. xsltproc is a command-line tool that applies XSLT transformations to XML files. The 'phing compile' target uses xsltproc to turn the manual's XML sources into the website, PDF and EPub formats you are reading now.
+        </para>
+        <para>
+          xsltproc is normally available through your operating system's package manager (if you run Linux).
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          ruby. ruby is a scripting language. The 'phing compile' target uses code written in ruby to convert the manual's XML sources into the EPub format.
+        </para>
+        <para>
+          ruby is normally available through your operating system's package manager (if you run Linux).
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Java 1.5 (or later) Standard Edition JDK. Java is a general-purpose compiled language. The 'phing compile' target uses code written in Java to convert the manual's XML sources into the PDF format.
+        </para>
+        <para>
+          Java is normally available through your operating system's package manager (if you run Linux). There are many different implementations of Java available these days. Always get the Sun JDK to ensure maximum compatibility. Other JDK's (such as the OpenJDK, or GCJ) have been known to produce errors.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          git. git is a distributed version control system originally created by Linus Torvalds for the Linux kernel project. You will need to use git from the command line to obtain a copy of this manual's source code.
+        </para>
+        <para>
+          git is normally available through your operating system's package manager (if you run Linux). Debian users may need to obtain a copy from elsewhere, as Debian's copy of git can sometimes be far older than versions in wide use.
+        </para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section id="appendixes.buildingManual.getting-sources">
+    <title>Getting The Sources</title>
+
+    <para>
+      The source code for all editions of this manual are available on github:
+    </para>
+
+    <screen><userinput>git clone git://github.com/stuartherbert/framework.mf.com.git</userinput></screen>
+  </section>
+
+  <section id="appendixes.buildingManual.compiling-sources">
+    <title>Compiling The Sources</title>
+
+    <para>
+      Once you have the source code to the manual, <literal>cd</literal> into the directory containing the <literal>build.xml</literal> file, and run:
+    </para>
+
+    <screen><userinput>phing compile</userinput></screen>
+
+    <para>
+      If all goes well, you should eventually see something like this:
+    </para>
+
+<screen><userinput>BUILD FINISHED
+
+Total time: 8.3339 seconds</userinput> </screen>
+
+    <para>
+      You will find the complete <ulink url="http://framework.methodosity.com">framework.methodosity.com</ulink> website in the <literal>dist/</literal> directory.
+    </para>
+  </section>
+
+  <section id="appendixes.buildingManual.install-local">
+    <title>Installing The Manual Locally</title>
+
+    <para>
+      If you want to install a copy of the compiled manual locally, run:
+    </para>
+    <screen><userinput>phing -D prefix=&lt;path/to/folder&gt; install.local</userinput></screen>
+    <para>
+      where <literal>&lt;path/to/folder&gt;</literal> is the folder where you want the manual installed into.  <emphasis role="strong">NOTE</emphasis> that you may need to be <literal>root</literal> to do this, if you don't own the folder you're writing to.
+    </para>
+  </section>
+
+  <section id="appendixes.buildingManual.editing">
+    <title>Editing The Manual</title>
+
+    <para>
+      Each edition of the manual lives in a separate folder under <literal>src/</literal>. We don't keep the different editions in separate branches because we want to be able to publish several editions (and translations) at the same time.
+    </para>
+
+    <para>
+      The main file for the manual is <literal>book.xml</literal>. It includes each chapter in turn in the right order. Edit this file if you create any new chapters for the manual.
+    </para>
+    <para>
+      Each chapter lives in its own XML file. We set the <literal>id</literal> attribute of the <literal>&lt;chapter&gt;</literal> and <literal>&lt;section&gt;</literal> tags explicitly to make it easier to insert cross-reference links if we need to.
+    </para>
+    <para>
+      Each appendix lives in its own XML file too. Note that you have to set the <literal>id</literal> attribute of the <literal>&lt;appendix&gt;</literal> to start with "appendixes.", otherwise the resulting HTML file will be empty.
+    </para>
+  </section>
+
+  <section id="appendixes.buildingManual.submitting">
+    <title>Submitting A Change</title>
+    <para>
+      To submit a change to the manual, fork the Github repository, submit your change to your fork, and then ping me with a request to pull from your repository.
+    </para>
+  </section>
+</appendix>
+<!-- vim: set tabstop=2 shiftwidth=2 expandtab: -->
