@@ -110,6 +110,19 @@ function webifyFile($file, $toc, $editions)
             $next = '<a accesskey="n" href="' . $next . '">Next</a>';
         }
     }
+    else
+    {
+        $buffer  = file_get_contents($file);
+        $title   = getSubstring($buffer, '<title>', '</title>', FALSE, FALSE);
+        // $content = getSubstring($buffer, '<div class="titlepage"', '<div class="navfooter">', TRUE, FALSE);
+        $content = getSubstring($buffer, '<div class="titlepage"', '<hr>', TRUE, FALSE) . "\n</div>\n";
+        $prev    = '';
+        $next    = getSubstring($buffer, '<link rel="next" href="', '" title', FALSE, FALSE);
+
+        if (!empty($next)) {
+            $next = '<a accesskey="n" href="' . $next . '">Next</a>';
+        }
+    }
 
     $buffer =  str_replace(
       array('{title}', '{content}', '{toc}', '{editions}', '{prev}', '{next}'),
