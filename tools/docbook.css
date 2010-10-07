@@ -335,11 +335,22 @@ body div.colleft div.col2 a {
   border-bottom: 1px dotted #ccc;  
 }
 
+body div.colleft div.col2 span.part a {
+  display: block;
+  padding: 2px 3px;
+  margin: 5px 0px 10px -3px;
+}
+
 body div.colleft div.col2 span.chapter a {
   display: block;
   padding: 2px 3px;
   margin: 5px 0px 10px -3px;
-  
+}
+
+body div.colleft div.col2 span.appendix a {
+  display: block;
+  padding: 2px 3px;
+  margin: 5px 0px 10px -3px;
 }
 
 body div.colleft div.col2 a:hover {
@@ -349,7 +360,23 @@ body div.colleft div.col2 a:hover {
   font-weight: bold;
 }
 
+body div.colleft div.col2 span.part a.active {
+  color: #000;
+  font-weight: bold;
+  background: none;
+  border-bottom: 1px dotted #333;
+  font-size: 14px;
+}
+
 body div.colleft div.col2 span.chapter a.active {
+  color: #000;
+  font-weight: bold;
+  background: none;
+  border-bottom: 1px dotted #333;
+  font-size: 14px;
+}
+
+body div.colleft div.col2 span.appendix a.active {
   color: #000;
   font-weight: bold;
   background: none;
@@ -399,6 +426,7 @@ body div.colleft div.col1 table a:hover {
 
 }
 
+body div.colleft div.col1 div.part div.titlepage h1.title,
 body div.colleft div.col1 div.chapter div.titlepage h2.title,
 body div.colleft div.col1 div.appendix div.titlepage h2.title {
   margin: 40px 0px 25px 0px !important;

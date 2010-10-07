@@ -64,7 +64,7 @@ function webifyFile($file, $toc, $editions)
 {
     $filename = basename($file);
 
-    if ($filename == 'phpunit-book.html') {
+    if (strpos('-book-', $filename)) {
         return;
     }
 
@@ -90,7 +90,11 @@ function webifyFile($file, $toc, $editions)
 
         else if (strpos($filename, 'preface') === 0) {
             $type = 'preface';
-        }
+	}
+
+	else if (strpos($filename, 'pt') === 0) {
+	    $type = 'part';
+	}
 
         else {
             $type = 'chapter';
