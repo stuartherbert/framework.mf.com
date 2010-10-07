@@ -41,13 +41,27 @@
     </abstract>
   </bookinfo>
 
+  <part>
+    <title>Introductions</title>
+    <partintro>
+    </partintro>
   &introduction;
   &license;
   &genesis;
   &goals;
   &installation;
+</part>
+<part>
+  <title>Core Components</title>
   &MF_Autoloader;
   &MF_Exception;
+</part>
+<part>
+  <title>The Framework For Building Apps</title>
+</part>
+<part>
+  <title>Additional Components</title>
+</part>
   &buildingManual;
   &index;
 </book>
