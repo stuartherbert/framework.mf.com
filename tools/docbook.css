@@ -183,7 +183,7 @@ code.literal {
   font-size: 0.85em;
 }
 
-p.note, div.example pre.programlisting, pre.screen {
+p.note, pre.programlisting, pre.screen {
   background-color: #eeeeec;
   margin: 1em 40px 1em 40px;
   padding: 0.5em;
@@ -246,13 +246,13 @@ pre span.bg {
 }
 
 pre span.comment {
-  color: #8f5902;
-  font-weight: bold;
+  color: #333;
+  font-weight: normal;
 }
 
 pre span.default {
-  color: #204a87;
-  font-weight: bold;
+  color: #000;
+  font-weight: normal;
 }
 
 pre span.html {
@@ -266,7 +266,7 @@ pre span.keyword {
 }
 
 pre span.string {
-  color: #a40000;
+  color: #0000a4;
   font-weight: bold;
 }
 
