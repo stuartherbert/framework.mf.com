@@ -1,10 +1,98 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <chapter id="MF_Autoloader">
-  <title>Autoloading</title>
+  <title>Autoloading Using MF_Autoloader</title>
 
-  <para>
-    Coming soon
-  </para>
+  <section id="MF_Autoloader.intro">
+    <title>Introducing Autoloading</title>
+
+    <para>
+      <literal>MF_Autoloader</literal> provides a generic PHP autoloader that you can use in your applications. It supports:
+    </para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          autoloading of classes from PHP's <literal>include_path</literal> and from your app's <literal>APP_LIBDIR</literal>
+        </para>
+        <para>
+          MF_Autoloader will automatically search every folder listed in PHP's <literal>include_path</literal> until it finds the class you're trying to use, or until it runs out of folders to search.  This allows it to load any class that has been installed onto the computer via <literal>pear</literal> (these classes typically go into <literal>/usr/share/php</literal>).
+        </para>
+        <para>
+          Instead of relying on classes installed into a shared folder like <literal>/usr/share/php</literal> (this can be a problem if people are trying to run your app on a shared hosting server), you may prefer to ship all of the classes with your app instead. If you define a constant called <literal>APP_LIBDIR</literal> to point to where these classes are, <literal>MF_Autoloader</literal> will look there first.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          autoloading of classes declared inside namespaces
+        </para>
+        <para>
+          <literal>MF_Autoloader</literal> fully supports PHP 5.3 namespaces, and starting in version 2.0 implements support for <ulink url="http://groups.google.com/group/php-standards/web/psr-0-final-proposal">PSR0</ulink> from the PHP Standards group.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          loading per-namespace bootstrap code
+        </para>
+        <para>
+          When you get (or create) a library of co-operating classes, sometimes PHP's lazy autoloading isn't enough; sometimes you will want to make PHP also load supporting functions or config stored in an additional file or two.  The <literal>__mf_init_namespace()</literal> can be called explicitly to include a <literal>$namespace/_init/$namespace.init.php</literal> PHP script file.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          loading per-namespace unit testing bootstrap code
+        </para>
+        <para>
+          When you're writing unit tests for a set of similar classes, sometimes there's code that can be shared between the tests. <literal>__mf_init_tests()</literal> allows the unit tests to load that shared code in a standardised manner.
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <para>
+      The current version is <literal>MF_Autoloader-2.0.X</literal>.
+    </para>
+  </section>
+
+  <section id="MF_Autoloader.installation.pear">
+    <title>Installation Via PEAR</title>
+    <para>
+      <literal>MF_Autoloader</literal> is installed via the <literal>pear</literal> command:
+    </para>
+    <screen><userinput>$ pear channel-discover pear.methodosity.com
+$ pear install MF_Autoloader</userinput></screen>
+  </section>
+
+  <section id="MF_Autoloader.using">
+    <title>Using The Autoloader</title>
+    <para>
+      To use the autoloader in your code, simply include it:
+    </para>
+    <programlisting><![CDATA[<?php
+
+// include the autoloader. PHP will look in your include_path for
+// the file; it will normally be in /usr/share/php, which is normally
+// first in your include_path
+include "mf.autoloader.php";
+
+// at this point, you can create new objects, and PHP will autoload
+// the classes for you using MF_Autoloader
+$variable = new MyClass();
+
+?>]]></programlisting>
+  </section>
+
+  <section id="MF_Autoloader.bestPractice">
+    <title>Recommended Best Practice</title>
+    <para>
+      Coming soon.
+    </para>
+  </section>
+
+  <section id="MF_Autoloader.bugs">
+    <title>Reporting Bugs In The Autoloader</title>
+    <para>
+      Coming soon.
+    </para>
+  </section>
 </chapter>
 <!-- vim: set tabstop=2 shiftwidth=2 expandtab: -->
