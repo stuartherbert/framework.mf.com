@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<chapter id="allComponents">
+  <title>List of Components</title>
+
+  <para>
+    The rest of this manual documents the Methodosity Framework's code and its components. For ease of reference, here's a list of the MF components and where to find their documentation later in the manual.
+  </para>
+
+  <table id="allComponents.table" pgwide="1">
+    <title>List of Components</title>
+
+    <tgroup cols="3" align="left" colsep="1" rowsep="1">
+      <thead>
+        <row>
+          <entry>Component Name</entry>
+          <entry>Purpose</entry>
+          <entry>Documented In</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry><literal>MF_Autoloader</literal></entry>
+          <entry>Autoloader support</entry>
+          <entry><xref linkend="MF_Autoloader"/></entry>
+        </row>
+        <row>
+          <entry><literal>MF_Exception</literal></entry>
+          <entry>Enterprise-class exceptions</entry>
+          <entry><xref linkend="MF_Exception"/></entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+</chapter>
+<!-- vim: set tabstop=2 shiftwidth=2 expandtab: -->

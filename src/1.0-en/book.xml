@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <!DOCTYPE book SYSTEM "../../tools/dblite/dblite.dtd" [
+  <!ENTITY allComponents SYSTEM "allComponents.xml">
   <!ENTITY buildingManual SYSTEM "buildingManual.xml">
   <!ENTITY copyright SYSTEM "copyright.xml">
   <!ENTITY genesis SYSTEM "genesis.xml">
@@ -50,6 +51,7 @@
   &genesis;
   &goals;
   &installation;
+  &allComponents;
 </part>
 <part>
   <title>Core Components</title>
