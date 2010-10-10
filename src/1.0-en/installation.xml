@@ -3,8 +3,47 @@
 <chapter id="installation">
   <title>Installation</title>
 
-  <para>
-    Coming soon
-  </para>
+  <section id="installation.requirements">
+    <title>Requirements</title>
+
+    <para>
+      To use the Methodosity Framework components, you need the following:
+    </para>
+
+    <itemizedlist>
+      <listitem>
+        <para>PHP 5.3.x</para>
+        <para>
+          The Methodosity Framework components use PHP 5.3 features and extensions. You will need PHP 5.3.x in both development and production environments.
+        </para>
+      </listitem>
+    </itemizedlist>
+  </section>
+  <section id="installation.howto">
+    <title>Installing MF</title>
+    <para>
+      If you want to install all of the Methodosity Framework, just install the <literal>MF</literal> package via <literal>pear</literal>:
+    </para>
+    <para>
+      <screen><userinput>$ pear channel-discover pear.methodosity.com</userinput>
+<userinput>$ pear install MF/MF</userinput></screen>
+    </para>
+
+    <para>
+      One of the advantages of the Methodosity Framework is that its individual components can be installed and used on their own.
+    </para>
+
+    <para>
+      <screen><userinput>$ pear channel-discover pear.methodosity.com</userinput>
+<userinput>$ pear install MF/&lt;MF-component&gt;</userinput></screen>
+    </para>
+  </section>
+
+  <section id="installation.devrequirements">
+    <title>Requirements For Developing MF Components</title>
+    <para>
+      Coming soon.
+    </para>
+  </section>
 </chapter>
 <!-- vim: set tabstop=2 shiftwidth=2 expandtab: -->
