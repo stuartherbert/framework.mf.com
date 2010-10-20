@@ -1,11 +1,32 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <chapter id="MF_Autoloader">
-  <title>Autoloading Using MF_Autoloader</title>
+  <title>Autoloading</title>
 
-  <section id="MF_Autoloader.intro">
-    <title>Introducing Autoloading</title>
+    <para>
+      <emphasis>Autoloading is on-demand loading of your PHP code.  MF_Autoloader is a Methodoisty Framework component that you can use as your autoloader.</emphasis>
+    </para>
 
+  <section id="MF_Autoloader.benefits">
+    <title>Benefits Of Using An Autoloader</title>
+    <para>
+      <emphasis>Autoloading</emphasis> is a PHP feature that replaces having to explicitly call <literal>require_once()</literal> when you want to load the code for a class. If you use an autoloader, PHP will go and load the code for a class when it is first used. This is a good idea for two reasons:
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          The autoloader will only load the classes that your code uses, and it loads each class only when you start using it. It is one less thing for you to worry about when you write code, and it makes your code a little bit quicker when it runs.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Another advantage of autoloading is that it helps to standardise the layout of your code, because you have to learn to put your classes in the locations where the autoloader will look for them. Our autoloader follows the <ulink url="http://groups.google.com/group/php-standards/web/psr-0-final-proposal">PSR-0</ulink> standard agreed between the major PHP frameworks, where each class is stored into its own file.
+        </para>
+      </listitem>
+    </itemizedlist>
+  </section>
+  <section id="MF_Autoloader.features">
+    <title>Autoloader Features</title>
     <para>
       <literal>MF_Autoloader</literal> provides a generic PHP autoloader that you can use in your applications. It supports:
     </para>
@@ -27,7 +48,7 @@
           autoloading of classes declared inside namespaces
         </para>
         <para>
-          <literal>MF_Autoloader</literal> fully supports PHP 5.3 namespaces, and starting in version 2.0 implements support for <ulink url="http://groups.google.com/group/php-standards/web/psr-0-final-proposal">PSR0</ulink> from the PHP Standards group.
+          <literal>MF_Autoloader</literal> fully supports PHP 5.3 namespaces, and starting in version 2.0 implements support for <ulink url="http://groups.google.com/group/php-standards/web/psr-0-final-proposal">PSR-0</ulink> from the PHP Standards group.
         </para>
       </listitem>
       <listitem>
@@ -46,6 +67,14 @@
           When you're writing unit tests for a set of similar classes, sometimes there's code that can be shared between the tests. <literal>__mf_init_tests()</literal> allows the unit tests to load that shared code in a standardised manner.
         </para>
       </listitem>
+      <listitem>
+        <para>
+          <literal>spl_autoload_register()</literal>
+        </para>
+        <para>
+          Our autoloader registers itself via PHP's <ulink url="http://www.php.net/spl_autoload_register">spl_autoload_register()</ulink>, so that it can be used alongside other autoloaders.
+        </para>
+      </listitem>
     </itemizedlist>
 
     <para>
@@ -59,7 +88,12 @@
       <literal>MF_Autoloader</literal> is installed via the <literal>pear</literal> command:
     </para>
     <screen><userinput>$ pear channel-discover pear.methodosity.com
-$ pear install MF_Autoloader</userinput></screen>
+$ pear install MF/MF_Autoloader</userinput></screen>
+    <para>
+      If you prefer, you can install the Methodosity Framework package, which will automatically install the autoloader and many other useful components:
+    </para>
+    <screen><userinput>$ pear channel-discover pear.methodosity.com
+$ pear install MF/MF</userinput></screen>
   </section>
 
   <section id="MF_Autoloader.using">
@@ -81,17 +115,65 @@ $variable = new MyClass();
 ?>]]></programlisting>
   </section>
 
-  <section id="MF_Autoloader.bestPractice">
-    <title>Recommended Best Practice</title>
+  <section id="MF_Autoloader.layoutScheme">
+    <title>Where To Put Your Classes</title>
     <para>
-      Coming soon.
+      The autoloader has to turn your classname into a filename, which it then loads into PHP on your behalf. These are the rules that the autoloader uses to do so:
     </para>
-  </section>
-
-  <section id="MF_Autoloader.bugs">
-    <title>Reporting Bugs In The Autoloader</title>
+    <itemizedlist>
+      <listitem>
+        <para>In namespaces, the namespace scope separator ('\') is translated into a directory separator.</para>
+      </listitem>
+      <listitem>
+        <para>In class names, each underscore ('_') is translated into a directory separator.</para>
+      </listitem>
+    </itemizedlist>
     <para>
-      Coming soon.
+      Once it has applied these translations, MF_Autoloader looks in each folder in PHP's <literal>include_path</literal>, one by one, for the file <literal>[&lt;translated-namespace&gt;/]&lt;translated-classname&gt;.php</literal>.
+    </para>
+    <para>
+      This can seem quite confusing when you first start to take advantage of an autoloader, so here are some examples of where to put your classes so that they will be automatically picked up by the autoloader.
+    </para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          The class <literal>MyClass</literal> goes into the file <literal>MyClass.php</literal>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          The class <literal>My_Class</literal> goes into the file <literal>My/Class.php</literal>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          The class <literal>My_Longer_Class</literal> goes into the file <literal>My/Longer/Class.php</literal>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          The class <literal>MyNamespace\MyClass</literal> goes into the file <literal>MyNamespace/MyClass.php</literal>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          The class <literal>MyNamespace\My_Class</literal> goes into the file <literal>MyNamespace/My_Class.php</literal>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          The class <literal>My\Namespace\My_Longer_Class</literal> goes into the file <literal>My/Namespace/My/Class.php</literal>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          The class <literal>My\Longer_Namespace\My_Longer_Class</literal> goes into the file <literal>My/Longer_Namespace/My/Longer/Class.php</literal>
+        </para>
+      </listitem>
+    </itemizedlist>
+    <para>
+      Note that underscores in namespaces do <emphasis>not</emphasis> get turned into directory separators.
     </para>
   </section>
 </chapter>
