@@ -57,105 +57,45 @@
     <para>
       What's the first bottleneck in development? It's the time it takes developers to create a new application (or to rewrite / replace an existing one). Ideas are only as valuable as your ability to execute them before someone else gets there first.
     </para>
-    <para>
-      This is the problem that most of the other frameworks are focused on solving. They do it in their own way, (actually, they do it in the same way Rails does, but they squeal like little girls when you tell them that, and deny it in the most adorable way) and you should definitely take a look at them to see if you want to introduce them to your mother.
-    </para>
-    <para>
-      We did, and we ran away to the hills screaming in terror. Whilst we were in hiding and getting over the shock, we put together a few ideas of our own about how to go about building more in less time.
-    </para>
 
-    <itemizedlist>
-      <listitem>
-        <para>Re-use More Code</para>
-        <para>
-          One of the best way to deliver applications quickly is to re-use as much code as possible from previous applications.
-        </para>
-        <para>
-          This is where the Perl language excels. Whatever the problem you're trying to solve, the chances are that there's already a module for it available in Perl's CPAN library. These modules are written to be generic and reusable.
-        </para>
-        <para>
-          The trend to use apps such as Wordpress, Drupal and Joomla as frameworks is the PHP world's preferred approach to this problem. It's not just that the PHP community lacks a direct CPAN equivalent; it's also that these content platform apps give you a substantial amount of functionality that's ready to use from the moment you install them. If that functionality suits your project (or you can adapt your project to suit the functionality), then they're a proven solution.
-        </para>
-        <para>
-          We believe that you've got more chance of re-using code if it's written from the ground up to be re-usable.  We also believe that re-usable code is easier to test (and therefore will have less bugs) and that breaking your challenges down into smaller lumps of code gives you more of a chance at doing a better job of writing code that works well.
-        </para>
-        <para>
-          That's why our framework comes in two separate layers: a lightweight application framework layer, and a richer underlying component layer. We're not just telling you how to do it, we're getting on and doing it. And we recommend that you do the same, and start to see your apps as an experience built on top of a growing library of components.
-        </para>
-      </listitem>
-      <listitem>
-        <para>
-          Write Less Code
-        </para>
-        <para>
-          Reusing code helps, but there comes a point where you have to get down and craft the specific functionality that your app needs. The sooner you reach this point, and the more you don't stray from it, the more of your time you're spending on what makes this site unique ... and presumably valuable.
-        </para>
-        <para>
-          Other than re-inventing the wheel, the biggest waste of a developer's time is spent in all of the routine-but-not-quite-generic boilerplate code to wire everything together.
-        </para>
-      </listitem>
-      <listitem>
-        <para>Ship Less Bugs</para>
-        <para>
-          Although zero-defect software is possible, sadly it is also really hard to achieve, and the odds are that you will ship code that contains bugs. Instead of creating more web apps, you'll end up wasting time having to fix the bugs you ship.
-        </para>
-        <para>
-          How do bugs get shipped in the first place? Mostly it is because no-one noticed that the bug was there. Sometimes it is because someone knew, but either couldn't or wouldn't fix the bug in time. There isn't much any framework can do about deliberately shipping bugs to customers, but there's plenty a framework can do to make the bugs be noticed in the first place.
-        </para>
-        <para>
-          We love PHP, but sadly its default behaviour is to allow your code to ignore errors that have happened. Your code has to actively check the return value of a call to a PHP function to spot an error. Most programmers do the least they can, and we have to acknowledge that this is a trend that will only get worse as time goes on (at least until civilisation collapses, but when that happens your choice of framework will be the least of your problems).
-        </para>
-        <para>
-          Our code takes a different approach. We throw exceptions, because we believe that all errors are exceptional events that should be brought to your attention. Especially when you're not paying attention. If you don't handle the exception yourself, that's not the end of the world, because we also provide a global exception handler to tell your users nicely that there's been a problem.
-        </para>
-        <para>
-          And, because we think hell will freeze over before PHP itself throws exceptions when its own functions run into an error, we also provide a wrapper for commonly-used PHP extensions to throw exceptions on PHP's behalf. Even though we know no-one will thank us for it.
-        </para>
-        <para>
-          Whilst we're on the subject of not letting you get away with being lazy, we've decided that we can't really trust you. We know that you're a discerning developer (because you're using our framework), but we're not yet ready to let you date our daughters. We definitely can't trust you to call our code with sensible parameters. We know you don't want to hear that, but there you have it.
-        </para>
-        <para>
-          So our code checks all of the parameters you pass to us, and if we catch you being silly, we throw you a nice exception in return.
-        </para>
-      </listitem>
-    </itemizedlist>
+    <para>
+      At the heart of this lies a single challenge: how can you spend all of your time creating the features that makes the application unique / special? You want to be spending all of your time, expending all of your energy, fixing all of your focus on what makes your application stand out, on what your app needs to be able to do so that it can ship and be a success.
+    </para>
+    <para>
+      Time spent anywhere else slows down your execution.
+    </para>
+    <para>
+      There are frameworks out there that are speed up development by focusing on code.  They rely on abstraction layers to hide difficult things from you, scaffolding to create the first version of your app's pages for you, and plugins to provide whole sections of functionality for you.  We recommend that you investigate these frameworks for yourself, as they might be very suitable for your needs and approach.
+    </para>
+    <para>
+      At Methodosity, we're all about people, and our framework is exploring a layered approach to speeding up development by focusing on the developer instead. We don't want to create a framework that does things for dumbed-down developers; we want to create a framework that empowers developers to run riot.  You'll see this throughout our guiding principles and the code that we ship.
+    </para>
+    <para>
+      Another important aspect of our work is making sure that we simply don't shift the burden and bottlenecks from initial development to the maintenance phase. Is there any point in writing code that you can't afford to maintain?
+    </para>
   </section>
 
   <section id="genesis.easierMaintenance">
     <title>Making Maintenance Easier</title>
 
     <para>
-      Some projects (such as temporary websites for an advertising campaign) need little or no maintenance, but most apps end up being used for a lot longer than anyone intended.  Your app will spend most of its existance being maintained, and there's a good chance that more development effort will go into maintenance than did into creating the app. 
+      Maintenance is everything that happens after your website has shipped. 
     </para>
     <para>
-      That makes maintenance the single biggest bottleneck in development today.
+      Many projects (such as temporary websites for an advertising campaign) need little or no maintenance. Once built, they are unlikely to need to change significantly during their lifetime.  They are perhaps best delivered using an app-as-a-framework such as Wordpress, Drupal or Joomla.  True apps end up being used in anger for a lot longer than anyone intended, especially if they prove to be successful, and once launched they are likely to need constant updating to keep up with requests from users and pressures from the competition.
     </para>
     <para>
-      Maintenance comes in two forms: bug fixing, and changing the functionality.  Both typically need to be done urgently, which can be a challenge as the original developer(s) tend to move on, leaving the job of maintenance to someone else to do.
+      Your app will spend most of its existance being maintained, and there's a good chance that more development effort will go into maintenance than did into creating the app.  That makes maintenance the single biggest bottleneck in development today.
     </para>
     <para>
-      It is clearly a good idea to make it easier to maintain code. But how can we achieve that?  Well, we've got some ideas on that.
+      Maintenance comes in two forms: bug fixing, and changing the functionality.  Both typically need to be done urgently, which can be a challenge as the original developer(s) tend to move on, leaving the job of maintenance to someone else to do.  It is clearly a good idea to make it easier to maintain code. But how can we achieve that? 
     </para>
-    <itemizedlist>
-      <listitem>
-        <para>Reduced Learning Curve</para>
-        <para>
-          If you can't get out of doing maintenance, then you don't want to be wasting your time trying to figure out what the framework is doing. You've got your hands full figuring out what <emphasis>your</emphasis> code is doing.
-        </para>
-      </listitem>
-      <listitem>
-        <para>Ship Less Bugs (Redux)</para>
-        <para>
-          We know that we've already mentioned this one, but we thought it important enough to remind you about it a second time.
-        </para>
-        <para>
-          We just want to stress again what a collosal waste of time and money it is to have to go back and fix something because you shipped something that didn't hang together right first time. Bugs cause interruptions, and interruptions are Enemy #1 to any form of productivity.
-        </para>
-        <para>
-          If you look in our GitHub repository, you'll see that we have unit tests for all of our code. And, if you wait long enough, you'll see us add unit tests for all of the bugs that we find. We don't just want to know that we've shipped code that works; we also want to know that we've shipped code that stays fixed.
-        </para>
-      </listitem>
-    </itemizedlist>
+    <para>
+      At Methodosity, we believe that the answer to that lies in the people creating the original application. If the original developers ship an application that is straightforward to learn, quick to disect in an emergency, flexible for change, and not riddled with bugs, then the maintainers are inheriting a good starting point for the work that they then have to do. After that, the challenge is making sure that the maintainers don't degrade the app either.
+    </para>
+    <para>
+      Our framework is exploring ways for the original developers to achieve their goals without transfering problems and ultimately costs to the maintainers instead.
+    </para>
   </section>
 
   <section id="genesis.frameworkPerformance">
@@ -171,6 +111,16 @@
     </para>
     <para>
       By choosing a scripting language like PHP, you're already eating up a load of CPU cycles on your servers. (This is where we should say something nice about Java, but we just can't bring ourselves to do it. We tried, honest guv!) It's pretty selfish and irresponsible to then run bloatware in PHP, making the world need even more servers ... don't you think?
+    </para>
+  </section>
+
+  <section id="genesis.guidelines">
+    <title>Turning Ideas Into Action</title>
+    <para>
+      Out of these questions has come the Methodosity Framework ... and behind the answers that our framework expresses, we've pulled out a set of core principles to guide our work over the lifetime of the framework.
+    </para>
+    <para>
+      These principles are listed in the next chapter.
     </para>
   </section>
 </chapter>
