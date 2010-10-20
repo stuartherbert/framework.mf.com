@@ -5,11 +5,11 @@
   <!ENTITY buildingManual SYSTEM "buildingManual.xml">
   <!ENTITY copyright SYSTEM "copyright.xml">
   <!ENTITY genesis SYSTEM "genesis.xml">
-  <!ENTITY goals SYSTEM "goals.xml">
   <!ENTITY index SYSTEM "index.xml">
   <!ENTITY installation SYSTEM "installation.xml">
   <!ENTITY introduction SYSTEM "introduction.xml">
   <!ENTITY license SYSTEM "license.xml">
+  <!ENTITY principles SYSTEM "principles.xml">
 
   <!ENTITY MF_Autoloader SYSTEM "MF_Autoloader.xml">
   <!ENTITY MF_Exception SYSTEM "MF_Exception.xml">
@@ -49,7 +49,7 @@
   &introduction;
   &license;
   &genesis;
-  &goals;
+  &principles;
   &installation;
   &allComponents;
 </part>

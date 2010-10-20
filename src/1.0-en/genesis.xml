@@ -3,67 +3,174 @@
 <chapter id="genesis">
   <title>Genesis</title>
 
-  <para>
-    The Methodosity Framework is a true 3rd generation framework for PHP developers.
-  </para>
-
-  <section id="genesis.1stgen">
-    <title>First Generation: Ruby on Rails Clones and MVC Frameworks</title>
-
+  <section id="genesis.keyquestions">
+    <title>The Key Questions</title>
     <para>
-      The first popular frameworks for web-based applications sprang from the phenominal success of Ruby on Rails. Rails showed how a well thought out and comprehensive framework for scripting languages could make a massive improvement to the productivity of web developers. It also showed how standardising the approach to building web-based applications around the Model-View-Controller approach could help developers improve the internal modularisation of their applications.
+      The Methodosity Framework is the result of attempting to answer these key questions:
     </para>
 
-    <para>
-      As the years have passed, the limitations of the Rails approach have become abundantly clear. Scaffolding and other hand-holding quickly runs out of steam when you're trying to go beyond cookie-cutter websites; the amount of magic that these frameworks do for you makes maintenance (esp when the code passes to different developers) expensive or prohibitive; and the runtime performance can be a killer as your site moves from the bedroom to the data centre.
-    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          How can we create PHP-based applications quicker?
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          How can we make our PHP-based applications easier to maintain, especially for developers who didn't write the original code?
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          How do we make a PHP-based framework that runs as quickly as possible, so that your app doesn't need lots of extra servers when it starts to get popular?
+        </para>
+      </listitem>
+    </itemizedlist>
 
     <para>
-      That didn't stop the first PHP frameworks attempting to replicate the Rails framework and its approaches.  This approach has run into two key problems, firstly because a lot of the genuine value and power of Rails relies on Ruby language features that simply don't exist in PHP, and secondly because the Rails execution model (Rails is a true application server, which processes persisting between HTTP requests, whereas PHP derives its power from the start-again execution model where no part of the PHP script persists between HTTP requests) is fundamentally different to PHP, allowing Rails to perform some expensive operations at start-up time which would kill the performance of a PHP-based app.
-    </para>
-
-    <para>
-      At the time of writing (late 2010), these first-generation frameworks are currently experiencing a mid-life crisis, as they struggle to address the on-going challenges of steep learning curves, mixed runtime performance characteristics, and diminishing returns on investment as the peak demand for cookie-cutter sites has passed.  They have been successful at drawing notable communities, and large coverage at conferences, and will doubtless survive.  But without significant change, their problems will survive with them.
-    </para>
-  </section>
-
-  <section id="genesis.2ndgen">
-    <title>Second Generation: Apps As Frameworks</title>
-
-    <para>
-      The second wave of popular frameworks are the web-based applications that have come to be used as frameworks themselves. The most notable examples of this are Wordpress, Drupal, and Joomla.  The irony is that these applications have been around for longer than the 1st generation frameworks, but that it took the rise of Rails for developers to realise just how much could be done by adapting these applications far beyond what they were originally written to do.
-    </para>
-
-    <para>
-      As interest in apps-as-frameworks has grown, so the apps themselves have evolved to improve their generic capabilities, embracing their newly-found popularity as platforms for a wider range of uses. This in turn has led to a growth in their popularity, and at the time of writing, developers for these apps are in higher demand than they are for the first generation frameworks.
-    </para>
-
-    <para>
-      The apps-as-framework approach has proven to be successful and productive, and arguably they represent the better approach to cookie-cutter websites when compared to the first generation frameworks. They have significant challenges wrt internal code quality and practices, and their size and popularity make it difficult for them to adopt strong engineering practices such as object-orientation and test-driven development, or to take advantage of improvements in the PHP language such as input filtering or lambda functions.  But they have a proven track-record, and are likely to be with us for the foreseeable future.
-    </para>
-
-    <para>
-      So where does that leave the development community who need to create innovative applications in reduced timescales?
+      We believe that a framework should answer <emphasis>all</emphasis> of these questions equally well. We couldn't find one that did, so reluctantly we decided to build our own. But first we thought we'd explain what we mean by a framework.
     </para>
   </section>
 
-  <section>
-    <title>Third Generation: The Building-Block Frameworks</title>
+  <section id="genesis.framework">
+    <title>What We Mean By A Framework</title>
+    <para>
+      A framework is an opinionated philosophy that gives you the principles and practices to follow to achieve something. It sets the strategy, tells you about everything you need to do, and gives you the detail on how to do it.
+    </para>
+    <para>
+      A component library, by contrast, gives you targetted tools to do one job well.
+    </para>
+    <para>
+      When you adopt a framework, it isn't like picking up a hammer to bash down a nail. Components in a component library are hammers (and frequently nails too). With a framework, you're picking up the Art of War. You're picking up the Book of Five Rings. You're buying into a philosophy, a way of thinking and of conducting the battle.  Your opponents in this battle are time and your pointy-haired boss, and the terrain is the set of ideas that you're trying to turn into a great web app.
+    </para>
+    <para>
+      The best frameworks are epic in scope. They tell you how to win. They provide you with tools to help you do it, but they also give you room to think for yourself and to find your own way to apply what they're selling. They have strong opinions which shape and polish all that they offer, and if you don't like those opinions, go pick another framework, because you'll spend all of your time fighting the framework instead of embracing it.
+    </para>
+    <para>
+      And remember; there's no such thing as the OneTrueFramework(tm). Very little in the world is right and wrong; there's just plain wrong, and the rest are mostly philosophical differences. The Methodosity Framework is our philosophy taught through the language of code. It isn't for everyone, and that's alright too.
+    </para>
+  </section>
+
+  <section id="genesis.createQuicker">
+    <title>Creating Applications Quicker</title>
 
     <para>
-      The time is now ripe to develop a third generation of frameworks, a generation that learns from the experiences of the previous two generations in order to offer a balanced and flexible approach for the future.
+      What's the first bottleneck in development? It's the time it takes developers to create a new application (or to rewrite / replace an existing one). Ideas are only as valuable as your ability to execute them before someone else gets there first.
+    </para>
+    <para>
+      This is the problem that most of the other frameworks are focused on solving. They do it in their own way, (actually, they do it in the same way Rails does, but they squeal like little girls when you tell them that, and deny it in the most adorable way) and you should definitely take a look at them to see if you want to introduce them to your mother.
+    </para>
+    <para>
+      We did, and we ran away to the hills screaming in terror. Whilst we were in hiding and getting over the shock, we put together a few ideas of our own about how to go about building more in less time.
     </para>
 
-    <para>
-      At the heart of this approach is the death of the monolithic framework, and the shift back to the pre-PHP world of Perl where applications can be assembled out of generic components.  Also key to this approach is scaling back the scaffolding that the framework provides, with a shift back to using features and functionality that the PHP language already provides.
-    </para>
+    <itemizedlist>
+      <listitem>
+        <para>Re-use More Code</para>
+        <para>
+          One of the best way to deliver applications quickly is to re-use as much code as possible from previous applications.
+        </para>
+        <para>
+          This is where the Perl language excels. Whatever the problem you're trying to solve, the chances are that there's already a module for it available in Perl's CPAN library. These modules are written to be generic and reusable.
+        </para>
+        <para>
+          The trend to use apps such as Wordpress, Drupal and Joomla as frameworks is the PHP world's preferred approach to this problem. It's not just that the PHP community lacks a direct CPAN equivalent; it's also that these content platform apps give you a substantial amount of functionality that's ready to use from the moment you install them. If that functionality suits your project (or you can adapt your project to suit the functionality), then they're a proven solution.
+        </para>
+        <para>
+          We believe that you've got more chance of re-using code if it's written from the ground up to be re-usable.  We also believe that re-usable code is easier to test (and therefore will have less bugs) and that breaking your challenges down into smaller lumps of code gives you more of a chance at doing a better job of writing code that works well.
+        </para>
+        <para>
+          That's why our framework comes in two separate layers: a lightweight application framework layer, and a richer underlying component layer. We're not just telling you how to do it, we're getting on and doing it. And we recommend that you do the same, and start to see your apps as an experience built on top of a growing library of components.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Write Less Code
+        </para>
+        <para>
+          Reusing code helps, but there comes a point where you have to get down and craft the specific functionality that your app needs. The sooner you reach this point, and the more you don't stray from it, the more of your time you're spending on what makes this site unique ... and presumably valuable.
+        </para>
+        <para>
+          Other than re-inventing the wheel, the biggest waste of a developer's time is spent in all of the routine-but-not-quite-generic boilerplate code to wire everything together.
+        </para>
+      </listitem>
+      <listitem>
+        <para>Ship Less Bugs</para>
+        <para>
+          Although zero-defect software is possible, sadly it is also really hard to achieve, and the odds are that you will ship code that contains bugs. Instead of creating more web apps, you'll end up wasting time having to fix the bugs you ship.
+        </para>
+        <para>
+          How do bugs get shipped in the first place? Mostly it is because no-one noticed that the bug was there. Sometimes it is because someone knew, but either couldn't or wouldn't fix the bug in time. There isn't much any framework can do about deliberately shipping bugs to customers, but there's plenty a framework can do to make the bugs be noticed in the first place.
+        </para>
+        <para>
+          We love PHP, but sadly its default behaviour is to allow your code to ignore errors that have happened. Your code has to actively check the return value of a call to a PHP function to spot an error. Most programmers do the least they can, and we have to acknowledge that this is a trend that will only get worse as time goes on (at least until civilisation collapses, but when that happens your choice of framework will be the least of your problems).
+        </para>
+        <para>
+          Our code takes a different approach. We throw exceptions, because we believe that all errors are exceptional events that should be brought to your attention. Especially when you're not paying attention. If you don't handle the exception yourself, that's not the end of the world, because we also provide a global exception handler to tell your users nicely that there's been a problem.
+        </para>
+        <para>
+          And, because we think hell will freeze over before PHP itself throws exceptions when its own functions run into an error, we also provide a wrapper for commonly-used PHP extensions to throw exceptions on PHP's behalf. Even though we know no-one will thank us for it.
+        </para>
+        <para>
+          Whilst we're on the subject of not letting you get away with being lazy, we've decided that we can't really trust you. We know that you're a discerning developer (because you're using our framework), but we're not yet ready to let you date our daughters. We definitely can't trust you to call our code with sensible parameters. We know you don't want to hear that, but there you have it.
+        </para>
+        <para>
+          So our code checks all of the parameters you pass to us, and if we catch you being silly, we throw you a nice exception in return.
+        </para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section id="genesis.easierMaintenance">
+    <title>Making Maintenance Easier</title>
 
     <para>
-      Also key to this approach is the need to empower the developer.  Many of the performance challenges from older generation frameworks come from trying to hide away complexity behind poorly-performing abstraction layers. In reality, these abstractions have become a crutch that prevents today's developers from getting to grips with the underlying databases that their apps interact with, and third-generation frameworks need to strip these away and reacquaint developers once more with the rich functionality already available in PHP itself.
+      Some projects (such as temporary websites for an advertising campaign) need little or no maintenance, but most apps end up being used for a lot longer than anyone intended.  Your app will spend most of its existance being maintained, and there's a good chance that more development effort will go into maintenance than did into creating the app. 
     </para>
-
     <para>
-      The result will be a lightwight approach that delivers minimal performance overheads, increased flexibility, and simplified maintenance into the future.
+      That makes maintenance the single biggest bottleneck in development today.
+    </para>
+    <para>
+      Maintenance comes in two forms: bug fixing, and changing the functionality.  Both typically need to be done urgently, which can be a challenge as the original developer(s) tend to move on, leaving the job of maintenance to someone else to do.
+    </para>
+    <para>
+      It is clearly a good idea to make it easier to maintain code. But how can we achieve that?  Well, we've got some ideas on that.
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>Reduced Learning Curve</para>
+        <para>
+          If you can't get out of doing maintenance, then you don't want to be wasting your time trying to figure out what the framework is doing. You've got your hands full figuring out what <emphasis>your</emphasis> code is doing.
+        </para>
+      </listitem>
+      <listitem>
+        <para>Ship Less Bugs (Redux)</para>
+        <para>
+          We know that we've already mentioned this one, but we thought it important enough to remind you about it a second time.
+        </para>
+        <para>
+          We just want to stress again what a collosal waste of time and money it is to have to go back and fix something because you shipped something that didn't hang together right first time. Bugs cause interruptions, and interruptions are Enemy #1 to any form of productivity.
+        </para>
+        <para>
+          If you look in our GitHub repository, you'll see that we have unit tests for all of our code. And, if you wait long enough, you'll see us add unit tests for all of the bugs that we find. We don't just want to know that we've shipped code that works; we also want to know that we've shipped code that stays fixed.
+        </para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section id="genesis.frameworkPerformance">
+    <title>Making Faster Frameworks</title>
+    <para>
+      On your laptop, or in the bedroom, all code runs quickly. You're the only person using it, and chances are you're using your app exactly as you intended it to be used. All that changes once you start letting other people use it. If they tell their friends about it, and it starts to get popular, hopefully your app's going to get some action. Maybe even some serious action. But not if it's a fat lady that is struggling under its own weight.
+    </para>
+    <para>
+      For the vast majority of folks trying to make a living writing code, hosting is expensive. Moving from shared hosting to a VPS to a dedicated box to a dedicated cluster might be a quick way to deal with performance problems, but it's also a great way to waste valuable cash. You might be keeping the folks at Dell and HP in a job, but wouldn't you rather keep that cash in your pocket?
+    </para>
+    <para>
+      There's also the serious point of doing your bit for the planet. You might not believe in climate change, but it's one of those things that doesn't care whether you believe in it or not. More servers means more manufacturing; more electricity to run the servers and the datacentres; and of course all the emissions pumped out by the beardy weirdies who make it all work.
+    </para>
+    <para>
+      By choosing a scripting language like PHP, you're already eating up a load of CPU cycles on your servers. (This is where we should say something nice about Java, but we just can't bring ourselves to do it. We tried, honest guv!) It's pretty selfish and irresponsible to then run bloatware in PHP, making the world need even more servers ... don't you think?
     </para>
   </section>
 </chapter>
