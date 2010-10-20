@@ -13,7 +13,7 @@
   <target name="help">
     <echo message="${project.name} ${project.version}: build.xml targets:" />
     <echo message="" />
-    <echo message="test" />
+    <echo message="lint" />
     <echo message="  Run the validation tools to catch Docbook errors" />
     <echo message="compile" />
     <echo message="  Turn the Docbook sources into the publishable books" />
@@ -29,29 +29,29 @@
   </target>
 
   <!-- Test the Docbook sources for validation errors -->
-  <target name="test">
-    <phingcall target="test-src">
-      <property name="test.version" value="1.0" />
-      <property name="test.lang" value="en" />
+  <target name="lint">
+    <phingcall target="lint-src">
+      <property name="lint.version" value="1.0" />
+      <property name="lint.lang" value="en" />
     </phingcall>
   </target>
 
-  <target name="test-src">
-    <property name="test.srcdir" value="${project.srcdir}/${test.version}-${test.lang}" />
-    <foreach param="xmlfile" absparam="absxmlfile" target="test-xml">
-      <fileset dir="${test.srcdir}">
+  <target name="lint-src">
+    <property name="lint.srcdir" value="${project.srcdir}/${lint.version}-${lint.lang}" />
+    <foreach param="xmlfile" absparam="absxmlfile" target="lint-xml">
+      <fileset dir="${lint.srcdir}">
         <include name="*.xml"/>
       </fileset>
     </foreach>
   </target>
 
   <!-- Check for XML errors -->
-  <target name="test-xml">
+  <target name="lint-xml">
     <exec command="xmllint --noout ${absxmlfile}" checkreturn="true" logoutput="true" />
   </target>
 
   <!-- Compile the Docbook into the published formats -->
-  <target name="compile" depends="test">
+  <target name="compile">
     <delete dir="${project.builddir}"/>
     <mkdir dir="${project.builddir}"/>
 
