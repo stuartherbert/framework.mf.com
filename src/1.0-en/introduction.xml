@@ -8,7 +8,7 @@
   </para>
 
   <para>
-    The Methodosity Framework is both an application framework and a generic component library for PHP applications. It has been created for PHP developers who want to re-use the PHP skills they already have.  It is guided by <link linkend="goals">a clear set of goals</link> (which you will find later in this manual) and by a sense of practicality. It is simple, elegant, and robust.
+    The Methodosity Framework is both an application framework and a generic component library for PHP applications. It has been created for PHP developers who want to re-use the PHP skills they already have.  It is guided by <link linkend="principles">a clear set of principles</link> (which you will find later in this manual) and by a sense of practicality. It is simple, elegant, and robust.
   </para>
 
   <para>
