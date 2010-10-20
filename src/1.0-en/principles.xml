@@ -1,33 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<chapter id="goals">
-  <title>Goals And Guiding Principles</title>
+<chapter id="principles">
+  <title>Guiding Principles</title>
 
-  <section id="goals-intro">
-    <title>Why Create Another Framework?</title>
-
-    <para>
-      At the time of writing, there are already a lot of PHP frameworks for you to choose from. So why write another one?
-    </para>
-
-    <para>
-      Whilst many of the frameworks are both high-quality and feature-rich, I find that time and time again they're just frameworks written <emphasis>in</emphasis> PHP, rather than being frameworks that fit into the way PHP tends to be used.  They can normally be categorised into two camps: either the framework is yet-another Ruby-on-Rails clone, or the framework looks like it's been written by someone who studied Design Patterns and Java during their university degree.
-   </para>
-
-   <para>
-     The end result is usually the same: a framework with a steep learning curve, terrible runtime performance, and long-term maintenance woes. None of these problems matter much in the bedroom (where almost anything can be made to work), but they matter a lot in business.  And as business models start to shift from consultancy (write once, run away model) to products (publish, rinse, repeat model), these problems are shifting to become one of the main challenges developers face.
-   </para>
-
-   <para>
-     The rise of software-as-a-service (SAAS) means that more and more developers have to maintain the code they write, fixing bugs whilst adding major new features.  The successful firms grow, bringing in more developers, until eventually the code is no longer maintained by the original developer, <emphasis>but it still needs to be maintained and enhanced</emphasis>.  Often, these changes need to happen quickly, where there's no time for a steep learning curve.  And, in time, code needs to be reused by different applications within the firm.
-   </para>
-
-   <para>
-     The existing frameworks leave you with the all-or-nothing choice: either you embrace them utterly, or they don't stick.  But it doesn't have to be this way, and that means the framework wars aren't over yet.
-   </para>
-  </section>
-
-  <section id="goals-guidingStatement">
+  <section id="principles.guidingStatement">
     <title>Guiding Statement</title>
 
     <para>
@@ -35,7 +11,7 @@
     </para>
   </section>
 
-  <section id="goals-principles">
+  <section id="principles.core">
     <title>Core Principles</title>
 
     <para>
@@ -74,7 +50,7 @@
         </para>
 
         <para>
-          PHP is, at its heart, a scripting language, and therefore code written in PHP is slower than code written in C or Java. It is said that performance doesn't matter, because the database is always the bottleneck; however, that is only true for the very simpliest of applications or for the very largest. Most modern web-based applications work hard, and hosting popular apps is not a cheap business. The more CPU time is spent in framework code, the less CPU time is spent running <emphasis>your</emphasis> code.
+          PHP is, at its heart, a scripting language, and therefore code written in PHP is going to run slower than code written in C or Java. It is often said on the blogs of prominent developers that performance doesn't matter, because the database is always the bottleneck; however, that is only true for the very simpliest of applications or for the very largest. Most modern web-based applications work hard, and hosting popular apps is not a cheap business. The more CPU time is spent in framework code, the less CPU time is spent running <emphasis>your</emphasis> code.
         </para>
 
         <para>
@@ -86,7 +62,7 @@
         <para><emphasis>Abstractions Are A Distraction</emphasis></para>
 
         <para>
-          Abstraction layers come with good intentions, but do you really need them? Are you really going to port your application from MySQL to run on Postgres? Do you really need the ORM to construct an SQL statemenet for you through several expensive function calls, when you could just write the request as a single string? Do these abstraction layers help, or do they distract you from learning more about the underlying datastores you're interacting with, whilst distracting the CPU with more time spent running the framework rather than your own code?
+          Abstraction layers come with good intentions, but do you really need them? Are you really going to port your application from MySQL to run on Postgres? Do you really need the ORM to construct an SQL statement for you through several expensive function calls, when you could just write the request as a single string? Do these abstraction layers help, or do they distract you from learning more about the underlying datastores you're interacting with, whilst distracting the CPU with more time spent running the framework rather than your own code?
         </para>
 
         <para>
@@ -107,6 +83,42 @@
       </listitem>
 
       <listitem>
+        <para><emphasis>Fail Early, Fail Forcibly</emphasis></para>
+
+        <para>
+          Both during development and during maintenance, there are few things more frustrating than trying to track down the cause of a bug. And unfortunately, when it comes to PHP, one of the recurring causes of bugs is failing to check the return code from a function.
+        </para>
+
+        <para>
+          The Methodosity Framework implements the principles of <emphasis>programming by contract</emphasis>, where arguments passed into methods and functions are assumed to be invalid <emphasis>unless</emphasis> they pass suitable checks. By failing early, the Methodosity Framework ensures that programmer mistakes are detected as soon as the code is written, making it much easier to find code bugs when they are first introduced.
+        </para>
+
+        <para>
+          The Methodosity Framework reports all detected errors via PHP exceptions; it does not assume (nor rely on) you checking return values to spot that something has gone wrong. By failing forcibly, the Methodosity Framework forces errors to appear as close as possible to the point when they happened, making it much quicker to track down code bugs.
+        </para>
+
+        <para>
+          The Methodosity Framework also takes advantage of namespace support in PHP 5.3 to provide a simple exception-throwing wrapper layer around PHP's built-in extensions. It's provided as a tool to use in development to create more robust applications, but it can also be used in production if you are so minded.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis>FIEO: Filter Input, Escape Output</emphasis></para>
+          
+        <para>
+          The Internet is often described as the modern Wild West, and even though the land rush is largely over, the more lawless aspects of that comparison still hold true. Any app you publish onto the Internet is open to attack from anyone and everyone, and you have both a moral and legal duty to safeguard the personal details of your users from theft.
+        </para>
+
+        <para>
+          Web application security has to be multi-layered to be effective, and out at the edge, one of the standard approaches to preventing the injection of malicious data into your app is to filter it on input, and then escape it (such as converting it into HTML entities) on output.
+        </para>
+
+        <para>
+          The Methodosity Framework provides your app with the tools it needs to filter all input from your users. Our ORM understands PHP's built-in filter support, making it easy for you to sanitise data out at the edge. The Framework helps your app be consistent in how to treat data, so that you can safely present all data back to your users by escaping output.
+        </para>
+      </listitem>
+
+      <listitem>
         <para><emphasis>Productivity By Avoiding Refactoring</emphasis></para>
 
         <para>
@@ -114,16 +126,27 @@
         </para>
 
         <para>
-          The Methodosity Framework will use <link linkend="goals.versioning">a clear version number scheme</link> to ensure that you know when you can safely upgrade, and when we've broken backwards compatibility (through choice or necessity).  Our unit tests (always available from our source code repositories) will test the interfaces that we document, and any regressions we've added during the lifetime of a component. If something works in our unit tests, we expect it to continue to work throughout the lifetime of the component.
+          The Methodosity Framework will use <link linkend="principles.versioning">a clear version number scheme</link> to ensure that you know when you can safely upgrade, and when we've broken backwards compatibility (through choice or necessity).  Our unit tests (always available from our source code repositories) will test the interfaces that we document, and any regressions we've added during the lifetime of a component. If something works in our unit tests, we expect it to continue to work throughout the lifetime of the component.
         </para>
         <para>
           In return, we need you to stick to using our components as documented, and to accept responsibility if your code breaks because you're using an undocumented trick.
         </para>
       </listitem>
+      <listitem>
+        <para><emphasis>Configuration In Code</emphasis></para>
+
+        <para>
+          All apps need configuration to be useful. Some of that configuration needs to be user-editable or even user-generated, that rightly that belongs in a persistent datastore such as MySQL. The rest of the configuration (which is created at development-time or installation-time) needs a home of its own, but that shouldn't be in slow-to-parse configuration files in XML or YAML.
+        </para>
+
+        <para>
+          The Methodosity Framework uses PHP for all of its configuration files, and is designed to avoid you having to create large centralised configuration files for your app.
+        </para>
+      </listitem>
     </itemizedlist>
   </section>
 
-  <section id="goals.versioning">
+  <section id="principles.versioning">
     <title>How Versioning Works</title>
 
     <para>
@@ -151,4 +174,4 @@
     </para>
   </section>
 </chapter>
-<!-- vim: set tabstop=2 shiftwidth=2 expadtab: -->
+<!-- vim: set tabstop=2 shiftwidth=2 expandtab: -->
